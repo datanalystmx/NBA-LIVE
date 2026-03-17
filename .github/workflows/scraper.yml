@@ -8,7 +8,6 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -19,12 +18,10 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install requests pytz
+        run: pip install requests pytz
 
       - name: Run scraper
-        run: |
-          python scraper/nba_scraper.py
+        run: python scraper/nba_scraper.py
 
       - name: Upload to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -33,9 +30,4 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           local-dir: ./data/
-          server-dir: ${{ secrets.FTP_PATH }}/data/
-```
-
-Abajo en **Commit changes** escribe:
-```
-add github actions scraper
+          server-dir: /data/
