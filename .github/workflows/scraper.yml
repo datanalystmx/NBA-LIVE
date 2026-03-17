@@ -137,4 +137,9 @@ def main():
         time.sleep(0.5)
 
     os.makedirs('data', exist_ok=True)
-    with open('data/live_game
+    with open('data/live_games.json', 'w') as f:
+        json.dump(output, f, indent=2)
+    print(f"OK data/live_games.json — {len(games)} juegos")
+
+if __name__ == '__main__':
+    main()
